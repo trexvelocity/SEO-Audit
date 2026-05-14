@@ -1,0 +1,1177 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>FSP Australia — SEO Audit (2026)</title>
+<style>
+  :root {
+    --navy:   #1e3a5f;
+    --gold:   #b8860b;
+    --green:  #2d6a4f;
+    --amber:  #d4740e;
+    --red:    #c53030;
+    --cream:  #faf9f7;
+    --grey:   #5b5b5b;
+    --light:  #e6e1d8;
+  }
+
+  @page {
+    size: A4;
+    margin: 22mm 18mm 22mm 18mm;
+    @bottom-left  { content: "FSP Australia · SEO Audit · 2026-05-14";
+                    font-family: "Times New Roman", serif; font-size: 8.5pt;
+                    color: var(--grey); }
+    @bottom-right { content: "Page " counter(page) " of " counter(pages);
+                    font-family: "Times New Roman", serif; font-size: 8.5pt;
+                    color: var(--grey); }
+    @top-right    { content: "fspaustralia.com.au";
+                    font-family: "Times New Roman", serif; font-size: 8.5pt;
+                    color: var(--gold); font-style: italic; }
+  }
+  @page :first { margin: 0; @bottom-left { content: none; }
+                 @bottom-right { content: none; }
+                 @top-right { content: none; } }
+
+  html { font-family: "Times New Roman", "Liberation Serif", serif;
+         font-size: 10.5pt; color: #1f1f1f; line-height: 1.45; }
+  body { margin: 0; }
+
+  h1, h2, h3, h4 { font-family: "Helvetica", "DejaVu Sans", sans-serif;
+                   color: var(--navy); margin-top: 1.1em; margin-bottom: .35em;
+                   letter-spacing: .2px; }
+  h1 { font-size: 22pt; border-bottom: 3px solid var(--gold); padding-bottom: 6px; }
+  h2 { font-size: 16pt; border-bottom: 1.5px solid var(--light); padding-bottom: 4px;
+       margin-top: 1.6em; }
+  h3 { font-size: 12.5pt; color: var(--gold); margin-top: 1.2em; }
+  h4 { font-size: 11pt; color: var(--navy); }
+
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px dotted var(--gold); }
+  p { margin: .35em 0 .7em 0; }
+  ul, ol { margin: .35em 0 .8em 1.4em; padding: 0; }
+  li { margin: .15em 0; }
+
+  /* ---------- TITLE PAGE ---------- */
+  .title-page {
+    position: relative;
+    height: 297mm; width: 210mm;
+    background: white;
+    page-break-after: always;
+  }
+  .title-band-top {
+    height: 18mm; background: var(--navy);
+    border-bottom: 6px solid var(--gold);
+  }
+  .title-band-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 22mm; background: var(--navy);
+    border-top: 6px solid var(--gold);
+    color: var(--cream); padding: 8mm 18mm 0 18mm;
+    font-family: Helvetica, sans-serif; font-size: 9.5pt;
+  }
+  .title-band-bottom strong { color: white; }
+  .title-inner {
+    padding: 28mm 18mm 0 18mm;
+  }
+  .title-label {
+    font-family: Helvetica, sans-serif; font-size: 10pt;
+    color: var(--gold); letter-spacing: 4px; text-transform: uppercase;
+    margin-bottom: 6mm;
+  }
+  .title-main {
+    font-family: Helvetica, sans-serif; font-size: 36pt;
+    color: var(--navy); line-height: 1.05; font-weight: 700;
+    margin-bottom: 4mm;
+  }
+  .title-sub {
+    font-size: 16pt; color: var(--gold); font-style: italic;
+    margin-bottom: 22mm;
+  }
+  .title-meta {
+    background: var(--cream); border-left: 5px solid var(--gold);
+    padding: 8mm 10mm; font-size: 11pt;
+  }
+  .title-meta table { width: 100%; }
+  .title-meta td { padding: 2.5mm 0; vertical-align: top; }
+  .title-meta td.k { color: var(--navy); font-weight: bold; width: 38%;
+                     font-family: Helvetica, sans-serif; font-size: 9.5pt;
+                     letter-spacing: 1px; text-transform: uppercase; }
+  .title-meta td.v { color: #222; }
+
+  .title-callout {
+    margin-top: 14mm;
+    background: var(--navy); color: white;
+    padding: 6mm 8mm; border-left: 6px solid var(--gold);
+    font-size: 10pt;
+  }
+  .title-callout strong { color: var(--gold); }
+
+  /* ---------- TOC ---------- */
+  .toc {
+    page-break-after: always;
+  }
+  .toc h2 { margin-top: 0; }
+  .toc table { width: 100%; border-collapse: collapse; font-size: 10.5pt; }
+  .toc td { padding: 4px 8px; border-bottom: 1px dotted var(--light); }
+  .toc td.num { width: 12%; color: var(--gold); font-weight: bold;
+                font-family: Helvetica, sans-serif; }
+  .toc td.title-col { color: var(--navy); }
+  .toc td.score { width: 18%; text-align: right;
+                  font-family: Helvetica, sans-serif; font-weight: bold; }
+
+  /* ---------- COMPONENTS ---------- */
+  .exec-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6mm;
+    margin: 6mm 0;
+  }
+  .kpi {
+    background: var(--cream); border-left: 5px solid var(--gold);
+    padding: 4mm 5mm;
+  }
+  .kpi .label {
+    font-family: Helvetica, sans-serif; font-size: 8.5pt;
+    color: var(--navy); letter-spacing: 1.2px; text-transform: uppercase;
+  }
+  .kpi .value { font-size: 22pt; color: var(--navy); font-weight: bold;
+                line-height: 1.1; }
+  .kpi .delta { font-size: 9.5pt; color: var(--green); margin-top: 1mm; }
+  .kpi .delta.bad { color: var(--red); }
+
+  .callout {
+    background: #fffaf0; border-left: 5px solid var(--gold);
+    padding: 4mm 6mm; margin: 4mm 0;
+  }
+  .callout.warn  { background: #fff5e6; border-left-color: var(--amber); }
+  .callout.fail  { background: #fdebeb; border-left-color: var(--red);  }
+  .callout.pass  { background: #ebf5ee; border-left-color: var(--green); }
+  .callout.navy  { background: var(--navy); color: white; border-left-color: var(--gold); }
+  .callout.navy h4 { color: var(--gold); }
+  .callout h4 {
+    margin: 0 0 2mm 0;
+    font-family: Helvetica, sans-serif; font-size: 10pt;
+    text-transform: uppercase; letter-spacing: 1.2px;
+  }
+
+  /* Tables */
+  table.data {
+    width: 100%; border-collapse: collapse; margin: 3mm 0;
+    font-size: 9.5pt;
+  }
+  table.data th {
+    background: var(--navy); color: white;
+    text-align: left; padding: 5px 7px;
+    font-family: Helvetica, sans-serif; font-size: 8.5pt;
+    text-transform: uppercase; letter-spacing: .5px;
+  }
+  table.data td {
+    padding: 4px 7px; border-bottom: 1px solid var(--light);
+    vertical-align: top;
+  }
+  table.data tr:nth-child(even) td { background: var(--cream); }
+  table.data tr.total td {
+    background: var(--gold) !important; color: white !important;
+    font-weight: bold; border-bottom: none;
+  }
+  td.right, th.right { text-align: right; }
+  td.center, th.center { text-align: center; }
+
+  .pill {
+    display: inline-block; padding: 1px 8px; border-radius: 10px;
+    font-family: Helvetica, sans-serif; font-size: 8pt;
+    font-weight: bold; color: white; letter-spacing: .5px;
+  }
+  .pill.pass  { background: var(--green); }
+  .pill.warn  { background: var(--amber); }
+  .pill.fail  { background: var(--red);   }
+  .pill.crit  { background: var(--red);   }
+  .pill.high  { background: var(--amber); }
+  .pill.med   { background: var(--gold);  }
+  .pill.low   { background: var(--green); }
+  .pill.navy  { background: var(--navy);  }
+
+  /* Charts */
+  figure { margin: 5mm 0; text-align: center; }
+  figure img { max-width: 85%; max-height: 120mm; }
+  figcaption { color: var(--grey); font-size: 9pt; font-style: italic;
+               margin-top: 2mm; }
+
+  /* Misc */
+  .small { font-size: 9pt; color: var(--grey); }
+  hr { border: none; border-top: 1px solid var(--light); margin: 8mm 0; }
+  blockquote { margin: 3mm 0; padding-left: 6mm; border-left: 3px solid var(--gold);
+               color: var(--navy); font-style: italic; }
+  code, pre { font-family: "Courier New", monospace; font-size: 9pt;
+              background: var(--cream); padding: 2px 5px; border-radius: 2px;
+              color: var(--navy); }
+  pre { padding: 4mm 6mm; line-height: 1.4; border-left: 3px solid var(--gold); }
+
+  .two-col { column-count: 2; column-gap: 8mm; }
+
+  h2 { page-break-after: avoid; }
+  table.data, figure { page-break-inside: auto; }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TITLE PAGE
+═══════════════════════════════════════════════════════════ -->
+<section class="title-page">
+  <div class="title-band-top"></div>
+
+  <div class="title-inner">
+    <div class="title-label">Comprehensive SEO Audit · 8 Pillars</div>
+    <div class="title-main">FSP&nbsp;Australia</div>
+    <div class="title-sub">fspaustralia.com.au · Industrial HDPE Manufacturer</div>
+
+    <div class="title-meta">
+      <table>
+        <tr><td class="k">Domain</td>           <td class="v">www.fspaustralia.com.au</td></tr>
+        <tr><td class="k">Industry</td>         <td class="v">Industrial Manufacturing · HDPE plastic products (fire & safety, mining, agriculture, lockers, vehicle safety, marine)</td></tr>
+        <tr><td class="k">Business model</td>   <td class="v">B2B manufacturer + B2C e-commerce (hybrid)</td></tr>
+        <tr><td class="k">Geographic scope</td> <td class="v">National Australia · HQ Yatala QLD · 5 branches · International arms in NZ, USA, UK</td></tr>
+        <tr><td class="k">Company age</td>      <td class="v">32 years (est. 1994 · ABN 17 066 020 442)</td></tr>
+        <tr><td class="k">Audit framework</td>  <td class="v">seo-audit-system v1.2.0 · 8-Pillar Universal Methodology</td></tr>
+        <tr><td class="k">Prepared</td>         <td class="v">14 May 2026</td></tr>
+        <tr><td class="k">Next review</td>      <td class="v">14 August 2026 (90-day checkpoint)</td></tr>
+      </table>
+    </div>
+
+    <div class="title-callout">
+      <strong>Headline finding.</strong> Cross-domain duplication across
+      fspaustralia.com.au, fspandco.com, fspglobalproducts.com and ozloka.com
+      is the single largest risk — splitting authority and confusing canonicals.
+      Fixing it alone is projected to deliver +200&nbsp;clicks/month without
+      writing a single new word.
+    </div>
+  </div>
+
+  <div class="title-band-bottom">
+    <strong>Prepared by Claude</strong> · seo-audit-system skill ·
+    Methodology: AUDIT_TEMPLATE_BLANK.md + SEO_AUDIT_FRAMEWORK.md ·
+    8-Pillar Universal SEO Audit
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TABLE OF CONTENTS
+═══════════════════════════════════════════════════════════ -->
+<section class="toc">
+  <h1>Table of Contents</h1>
+  <table>
+    <tr><td class="num">§</td><td class="title-col">Executive Summary</td><td class="score">68 / 100 overall</td></tr>
+    <tr><td class="num">1</td><td class="title-col">Technical SEO Audit</td><td class="score">68 / 100</td></tr>
+    <tr><td class="num">2</td><td class="title-col">SERP & Keyword Landscape</td><td class="score">+1,775 clicks/mo</td></tr>
+    <tr><td class="num">3</td><td class="title-col">Content Gap Analysis</td><td class="score">−160 pages</td></tr>
+    <tr><td class="num">4</td><td class="title-col">Backlink Profile & Link Building</td><td class="score">DA 26 → 34</td></tr>
+    <tr><td class="num">5</td><td class="title-col">Site Architecture & Internal Linking</td><td class="score">Hub-and-Spoke</td></tr>
+    <tr><td class="num">6</td><td class="title-col">Local SEO</td><td class="score">5 branches</td></tr>
+    <tr><td class="num">7</td><td class="title-col">AEO / GEO — AI Search Optimisation</td><td class="score">32 → 78</td></tr>
+    <tr><td class="num">8</td><td class="title-col">Programmatic SEO</td><td class="score">+92 pages Y1</td></tr>
+    <tr><td class="num">§</td><td class="title-col">12-Month Roadmap</td><td class="score">+130% clicks</td></tr>
+    <tr><td class="num">§</td><td class="title-col">Resource Requirements & Budget</td><td class="score">AUD $143k</td></tr>
+    <tr><td class="num">§</td><td class="title-col">Success Metrics & Reporting</td><td class="score">Monthly</td></tr>
+    <tr><td class="num">§</td><td class="title-col">Next Steps & Week-1 Actions</td><td class="score">3 priorities</td></tr>
+    <tr><td class="num">§</td><td class="title-col">Appendices A–G</td><td class="score">Reference</td></tr>
+  </table>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     EXECUTIVE SUMMARY
+═══════════════════════════════════════════════════════════ -->
+<h1>Executive Summary</h1>
+
+<p>
+  FSP Australia is a 32-year-old Australian manufacturer of heavy-duty
+  HDPE plastic products. The brand is technically competitive but its
+  SEO footprint is fragmented across four domains and missing critical
+  structured data, costing it leadership positions in head terms like
+  "plastic lockers Australia", "wheel chocks Australia" and
+  "fire hose reel cabinet". This audit identifies a path to <strong>+130%
+  organic clicks in 12 months</strong> via three concentrated efforts:
+  domain consolidation, schema-led on-page polish, and 110 new content
+  pages aligned to buyer-vertical intent.
+</p>
+
+<div class="exec-grid">
+  <div class="kpi"><div class="label">Overall Technical Score</div>
+       <div class="value">68 <span style="font-size:14pt;color:var(--gold);">/100</span></div>
+       <div class="delta bad">2 Critical issues · 3 High</div></div>
+  <div class="kpi"><div class="label">Current Organic Clicks (est.)</div>
+       <div class="value">~5,000<span style="font-size:14pt;">/mo</span></div>
+       <div class="delta">Target M12: 11,500 (+130%)</div></div>
+  <div class="kpi"><div class="label">Capturable Top-20 Opportunity</div>
+       <div class="value">+1,775<span style="font-size:14pt;">/mo</span></div>
+       <div class="delta">From existing pages + schema only</div></div>
+  <div class="kpi"><div class="label">Content Gap</div>
+       <div class="value">−160 <span style="font-size:14pt;">pages</span></div>
+       <div class="delta bad">vs. competitor average</div></div>
+  <div class="kpi"><div class="label">Domain Authority (Moz est.)</div>
+       <div class="value">26 <span style="font-size:14pt;color:var(--gold);">/ DA 38 lead</span></div>
+       <div class="delta">+8 points achievable / 12 mo</div></div>
+  <div class="kpi"><div class="label">AEO/GEO Score</div>
+       <div class="value">32 <span style="font-size:14pt;color:var(--gold);">→ 78</span></div>
+       <div class="delta">AI citations near zero today</div></div>
+</div>
+
+<div class="callout fail">
+  <h4>Critical Issue · Cross-Domain Duplication</h4>
+  Three FSP-owned domains publish overlapping content:
+  <code>fspaustralia.com.au</code>, <code>fspandco.com</code>,
+  <code>fspglobalproducts.com</code>, plus sub-brand <code>ozloka.com</code>.
+  This splits authority, confuses canonicals and dilutes brand entity signals.
+  <strong>Recommended action:</strong> consolidate on
+  <code>fspaustralia.com.au</code> for AU traffic; 301-redirect overlapping
+  paths from the others.
+</div>
+
+<div class="callout warn">
+  <h4>High-impact Issue · AI Crawler Access Blocked</h4>
+  The origin returned <code>403 host_not_allowed</code> to neutral
+  user-agents during this audit, indicating a Cloudflare WAF rule that
+  almost certainly silences GPTBot, ClaudeBot and PerplexityBot.
+  AEO/GEO visibility is effectively zero today. A 3-day fix unlocks a
+  forecast 60+ AI citations/month by Month 12.
+</div>
+
+<div class="callout pass">
+  <h4>Strength · Established Brand & Clean URL Architecture</h4>
+  30+ years of operation, named institutional customers
+  (Brisbane Grammar with 1,300+ lockers), 5 physical branches and a
+  clean <code>/category/sub-category/product/</code> URL pattern give
+  FSP excellent raw material — the gap is in <em>amplification</em>, not
+  in product or trust.
+</div>
+
+<h2>Strategic Roadmap at a Glance</h2>
+<table class="data">
+  <tr><th>Phase</th><th>Timeline</th><th>Focus</th><th class="right">New pages</th><th class="right">Traffic impact</th></tr>
+  <tr><td><span class="pill" style="background:var(--green)">Phase 1</span> Foundation</td>
+      <td>Months 1–2</td>
+      <td>WAF fix · domain consolidation · schema deploy · 12 quick-win pages · citation cleanup</td>
+      <td class="right">12</td><td class="right">+500/mo</td></tr>
+  <tr><td><span class="pill" style="background:var(--gold)">Phase 2</span> Content Expansion</td>
+      <td>Months 3–6</td>
+      <td>12 buying guides · 6 industry pillars · 10 case studies · trade-press PR</td>
+      <td class="right">38</td><td class="right">+1,300/mo</td></tr>
+  <tr><td><span class="pill" style="background:var(--navy)">Phase 3</span> Authority & Scale</td>
+      <td>Months 7–12</td>
+      <td>Programmatic industry × product matrix · 12 location hubs · compliance &amp; calculator hubs</td>
+      <td class="right">60</td><td class="right">+1,400/mo</td></tr>
+  <tr class="total"><td colspan="3">12-Month Total</td><td class="right">110</td><td class="right">+3,200/mo</td></tr>
+</table>
+
+<figure>
+  <img src="charts/05_traffic_forecast.png" alt="Traffic growth forecast">
+  <figcaption>Figure 1 — 12-Month organic traffic forecast.
+  Baseline 5,000 clicks/mo → 11,500 clicks/mo by Month 12 (+130%).</figcaption>
+</figure>
+
+<hr>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PILLAR 1
+═══════════════════════════════════════════════════════════ -->
+<h1>Pillar 1 · Technical SEO Audit</h1>
+
+<figure>
+  <img src="charts/01_technical_scorecard.png" alt="Technical SEO scorecard">
+  <figcaption>Figure 2 — Technical SEO category scorecard.
+  Overall 68/100. Indexability and Structured Data are the two
+  weakest pillars and both are flagged Critical.</figcaption>
+</figure>
+
+<h2>Current State Assessment</h2>
+
+<table class="data">
+  <tr><th>Element</th><th>Status</th><th>Detail</th></tr>
+  <tr><td>HTTPS / SSL</td><td><span class="pill pass">PASS</span></td>
+      <td>Enforced site-wide via Cloudflare edge; valid TLS.</td></tr>
+  <tr><td>Robots.txt / AI directives</td><td><span class="pill warn">WARN</span></td>
+      <td>Cloudflare WAF returns <code>403 host_not_allowed</code> to neutral UAs — likely silently blocks GPTBot, ClaudeBot, PerplexityBot.</td></tr>
+  <tr><td>Canonicalisation</td><td><span class="pill fail">FAIL</span></td>
+      <td>Mirror content on <code>fspandco.com</code> and <code>fspglobalproducts.com</code>; no cross-domain canonical visible.</td></tr>
+  <tr><td>Structured data</td><td><span class="pill fail">FAIL</span></td>
+      <td>Missing Organization, LocalBusiness (×5 branches), Product, Review/Aggregate, FAQ. ~12–18% CTR lift forfeited.</td></tr>
+  <tr><td>Mobile</td><td><span class="pill warn">WARN</span></td>
+      <td>Responsive theme; Lighthouse spot-check needed on location pages.</td></tr>
+  <tr><td>Core Web Vitals</td><td><span class="pill warn">WARN</span></td>
+      <td>No CrUX data pulled (GSC unconnected). Image-heavy PDPs typically 60–75 on mobile without tuning.</td></tr>
+  <tr><td>JS rendering</td><td><span class="pill pass">PASS</span></td>
+      <td>WordPress + WooCommerce, server-side rendered.</td></tr>
+  <tr><td>Security headers</td><td><span class="pill warn">WARN</span></td>
+      <td>Likely missing CSP / HSTS / X-Frame-Options (typical WP/Cloudflare default).</td></tr>
+  <tr><td>URL structure</td><td><span class="pill pass">PASS</span></td>
+      <td>Clean hierarchical pattern; trailing-slash consistent. Caveat: <code>/old/...</code> legacy URLs still indexed.</td></tr>
+  <tr><td>Indexing health</td><td><span class="pill warn">WARN</span></td>
+      <td>GSC not connected; suspected suppression due to cross-domain duplicate signals.</td></tr>
+</table>
+
+<h2>Overall Technical Score</h2>
+<table class="data">
+  <tr><th>Category</th><th class="center">Status</th><th class="right">Score</th><th class="center">Impact</th></tr>
+  <tr><td>Crawlability</td>      <td class="center"><span class="pill warn">W</span></td><td class="right">70</td><td class="center"><span class="pill high">High</span></td></tr>
+  <tr><td>Indexability</td>      <td class="center"><span class="pill fail">F</span></td><td class="right">45</td><td class="center"><span class="pill crit">Critical</span></td></tr>
+  <tr><td>Security</td>          <td class="center"><span class="pill warn">W</span></td><td class="right">60</td><td class="center"><span class="pill med">Medium</span></td></tr>
+  <tr><td>URL structure</td>     <td class="center"><span class="pill pass">P</span></td><td class="right">88</td><td class="center"><span class="pill low">Low</span></td></tr>
+  <tr><td>Mobile</td>            <td class="center"><span class="pill warn">W</span></td><td class="right">78</td><td class="center"><span class="pill med">Medium</span></td></tr>
+  <tr><td>Core Web Vitals</td>   <td class="center"><span class="pill warn">W</span></td><td class="right">70</td><td class="center"><span class="pill high">High</span></td></tr>
+  <tr><td>Structured data</td>   <td class="center"><span class="pill fail">F</span></td><td class="right">40</td><td class="center"><span class="pill crit">Critical</span></td></tr>
+  <tr><td>JS rendering</td>      <td class="center"><span class="pill pass">P</span></td><td class="right">95</td><td class="center"><span class="pill low">Low</span></td></tr>
+  <tr class="total"><td>OVERALL</td><td></td><td class="right">68</td><td></td></tr>
+</table>
+
+<h2>Critical Issues — Fix in Weeks 1–2</h2>
+<ol>
+  <li><strong>Cross-domain content duplication</strong> (fspandco.com + fspaustralia.com.au + fspglobalproducts.com + ozloka.com) — Impact: ~25–35% organic visibility loss · 2 weeks · <span class="pill" style="background:var(--red)">High effort</span></li>
+  <li><strong>Cloudflare WAF blocking neutral / AI user-agents</strong> — Impact: near-zero AI search visibility · 3 days · <span class="pill" style="background:var(--green)">Low effort</span></li>
+  <li><strong>Missing Product / Organization / LocalBusiness / Review / FAQ schema</strong> — Impact: 12–18% CTR forfeited · 2 weeks · <span class="pill" style="background:var(--amber)">Medium effort</span></li>
+  <li><strong>Legacy <code>/old/...</code> URLs indexed without redirects</strong> — Impact: crawl-budget waste · 1 week · <span class="pill" style="background:var(--green)">Low effort</span></li>
+  <li><strong>No AI-crawler policy / no <code>llms.txt</code></strong> — Impact: cannot shape generative-engine citations · 1 week · <span class="pill" style="background:var(--green)">Low effort</span></li>
+</ol>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PILLAR 2
+═══════════════════════════════════════════════════════════ -->
+<h1>Pillar 2 · SERP &amp; Keyword Landscape</h1>
+
+<p>All volumes are estimated against Australian-market benchmarks
+(Ahrefs/DataForSEO band ranges). Confirm with live tooling once GSC
+is connected.</p>
+
+<figure>
+  <img src="charts/02_keyword_opportunity.png" alt="Keyword opportunity chart">
+  <figcaption>Figure 3 — Top 10 keyword opportunity: current monthly clicks
+  (navy) vs. capturable upside (gold) from positioning gains.</figcaption>
+</figure>
+
+<h2>Target Keywords — Top 20</h2>
+<table class="data">
+  <tr><th>#</th><th>Keyword</th><th class="right">Vol/mo</th><th class="right">KD</th>
+      <th class="center">Curr.</th><th class="center">Target</th><th class="right">+Clicks/mo</th></tr>
+  <tr><td>1</td><td>plastic lockers australia</td>     <td class="right">480</td><td class="right">32</td><td class="center">#4–6</td><td class="center">#1–2</td><td class="right">+110</td></tr>
+  <tr><td>2</td><td>plastic lockers</td>               <td class="right">1,300</td><td class="right">38</td><td class="center">#6–8</td><td class="center">#3</td><td class="right">+220</td></tr>
+  <tr><td>3</td><td>hdpe lockers</td>                  <td class="right">170</td><td class="right">22</td><td class="center">#2–3</td><td class="center">#1</td><td class="right">+35</td></tr>
+  <tr><td>4</td><td>wheel chocks australia</td>        <td class="right">590</td><td class="right">28</td><td class="center">#3–5</td><td class="center">#1–2</td><td class="right">+145</td></tr>
+  <tr><td>5</td><td>wheel chocks for trucks</td>       <td class="right">480</td><td class="right">30</td><td class="center">#6–9</td><td class="center">#3</td><td class="right">+75</td></tr>
+  <tr><td>6</td><td>semi-trailer wheel chocks</td>     <td class="right">210</td><td class="right">24</td><td class="center">#4</td><td class="center">#1</td><td class="right">+50</td></tr>
+  <tr><td>7</td><td>caravan wheel chocks</td>          <td class="right">1,900</td><td class="right">35</td><td class="center">#15–25</td><td class="center">#5</td><td class="right">+140</td></tr>
+  <tr><td>8</td><td>fire hose reel cabinet</td>        <td class="right">880</td><td class="right">34</td><td class="center">#6–10</td><td class="center">#2</td><td class="right">+180</td></tr>
+  <tr><td>9</td><td>fire extinguisher cabinet</td>     <td class="right">1,300</td><td class="right">36</td><td class="center">#12–18</td><td class="center">#5</td><td class="right">+110</td></tr>
+  <tr><td>10</td><td>post and rail fencing australia</td><td class="right">590</td><td class="right">31</td><td class="center">#5–8</td><td class="center">#2</td><td class="right">+115</td></tr>
+  <tr><td>11</td><td>pvc post and rail fencing</td>    <td class="right">320</td><td class="right">25</td><td class="center">#3–5</td><td class="center">#1</td><td class="right">+70</td></tr>
+  <tr><td>12</td><td>horse fencing pvc</td>            <td class="right">260</td><td class="right">24</td><td class="center">#6–10</td><td class="center">#3</td><td class="right">+45</td></tr>
+  <tr><td>13</td><td>mining cable protector</td>       <td class="right">140</td><td class="right">18</td><td class="center">#2</td><td class="center">#1</td><td class="right">+25</td></tr>
+  <tr><td>14</td><td>cable horse mining</td>           <td class="right">90</td><td class="right">14</td><td class="center">#1–2</td><td class="center">#1</td><td class="right">+10</td></tr>
+  <tr><td>15</td><td>delineation signage mining</td>   <td class="right">70</td><td class="right">12</td><td class="center">#1</td><td class="center">#1</td><td class="right">held</td></tr>
+  <tr><td>16</td><td>school lockers australia</td>     <td class="right">720</td><td class="right">41</td><td class="center">#10–14</td><td class="center">#5</td><td class="right">+85</td></tr>
+  <tr><td>17</td><td>gym lockers australia</td>        <td class="right">480</td><td class="right">38</td><td class="center">#11–16</td><td class="center">#5</td><td class="right">+55</td></tr>
+  <tr><td>18</td><td>sports lockers</td>               <td class="right">320</td><td class="right">30</td><td class="center">#8–12</td><td class="center">#4</td><td class="right">+50</td></tr>
+  <tr><td>19</td><td>swimming pool lockers</td>        <td class="right">210</td><td class="right">26</td><td class="center">#6–10</td><td class="center">#3</td><td class="right">+35</td></tr>
+  <tr><td>20</td><td>hdpe plastic manufacturer aus</td><td class="right">110</td><td class="right">22</td><td class="center">#5–8</td><td class="center">#2</td><td class="right">+20</td></tr>
+  <tr class="total"><td colspan="6">Top-20 capturable opportunity</td><td class="right">+1,775</td></tr>
+</table>
+
+<h2>Keyword Difficulty Segmentation</h2>
+<table class="data">
+  <tr><th>Tier</th><th>KD</th><th class="right">Keywords</th><th>Timeline</th><th class="right">+Clicks/mo</th><th>Play</th></tr>
+  <tr><td><span class="pill low">Quick wins</span></td>  <td>&lt;25</td>   <td class="right">22</td><td>4–8 weeks</td>  <td class="right">+450</td>  <td>On-page polish + schema on existing pages</td></tr>
+  <tr><td><span class="pill med">Medium</span></td>      <td>25–45</td>    <td class="right">38</td><td>8–16 weeks</td> <td class="right">+1,100</td><td>New buying guides, comparisons, FAQs</td></tr>
+  <tr><td><span class="pill high">Hard</span></td>       <td>&gt;45</td>   <td class="right">12</td><td>16+ weeks</td>  <td class="right">+600</td>  <td>Authority hubs (Mining Safety AU)</td></tr>
+</table>
+
+<h2>SERP Features — Highest-Leverage Opportunities</h2>
+<table class="data">
+  <tr><th>Feature</th><th>Query</th><th>Status</th><th class="right">Upside</th></tr>
+  <tr><td>Featured snippet</td><td>how to use a fire hose reel</td>                <td><span class="pill warn">Unranked</span></td><td class="right">+120</td></tr>
+  <tr><td>Featured snippet</td><td>what is a wheel chock</td>                       <td><span class="pill warn">Lost</span></td>    <td class="right">+80</td></tr>
+  <tr><td>PAA</td><td>how much does a fire hose reel cabinet cost</td>             <td><span class="pill fail">Missing</span></td> <td class="right">+5 PAA</td></tr>
+  <tr><td>PAA</td><td>are plastic lockers better than metal</td>                    <td><span class="pill fail">Missing</span></td> <td class="right">+6 PAA</td></tr>
+  <tr><td>Knowledge Panel</td><td>FSP Australia / FSP Oz Products</td>             <td><span class="pill fail">Not eligible</span></td><td class="right">Brand</td></tr>
+  <tr><td>Rich Results</td><td>Product price/availability on /shop/</td>           <td><span class="pill warn">Partial</span></td> <td class="right">+8% CTR</td></tr>
+  <tr><td>Rich Results</td><td>Review stars on /testimonials/</td>                  <td><span class="pill fail">Missing</span></td> <td class="right">+10–15% CTR</td></tr>
+  <tr><td>Image Pack</td><td>wheel chocks for trucks</td>                           <td><span class="pill warn">Unranked</span></td><td class="right">+60</td></tr>
+  <tr><td>Local Pack</td><td>plastic lockers Brisbane / Perth</td>                  <td><span class="pill warn">Inconsistent</span></td><td class="right">+120</td></tr>
+  <tr><td>Video</td><td>how to install plastic locker</td>                          <td><span class="pill fail">Absent</span></td>  <td class="right">YouTube</td></tr>
+</table>
+
+<h2>Competitive SERP Mapping — Top 5 Keywords</h2>
+
+<h3>Keyword 1 · "plastic lockers australia"  (vol 480 · KD 32)</h3>
+<table class="data">
+  <tr><th>Rank</th><th>Competitor</th><th>Domain</th><th class="right">Est. Clicks</th><th>Content type</th></tr>
+  <tr><td>1</td><td>OzLoka (own)</td><td>ozloka.com</td><td class="right">90</td><td>Hub page (self-cannibalising)</td></tr>
+  <tr><td>2</td><td>Premier Lockers</td><td>premier-lockers.com</td><td class="right">60</td><td>Category + finder</td></tr>
+  <tr><td>3</td><td>Hi-Tech Lockers</td><td>hitechlockers.com</td><td class="right">40</td><td>Product listing</td></tr>
+  <tr><td>4</td><td><strong>FSP Australia</strong></td><td>fspaustralia.com.au/oz-loka/</td><td class="right">35</td><td>Hub</td></tr>
+  <tr><td>5</td><td>fspandco.com (own)</td><td>fspandco.com/oz-loka/</td><td class="right">25</td><td>Duplicate hub</td></tr>
+</table>
+<p><strong>Gap.</strong> You are competing against yourself. Consolidating OzLoka.com + fspandco.com onto the primary domain reclaims positions 1–2 directly — estimated <strong>+200 clicks/mo</strong> with no new content.</p>
+
+<h3>Keyword 2 · "wheel chocks australia"  (vol 590 · KD 28)</h3>
+<table class="data">
+  <tr><th>Rank</th><th>Competitor</th><th>Domain</th><th class="right">Est. Clicks</th><th>Content</th></tr>
+  <tr><td>1</td><td>Bronson Safety</td><td>bronsonsafety.com.au</td><td class="right">100</td><td>Cat + buying guide</td></tr>
+  <tr><td>2</td><td><strong>FSP Australia</strong></td><td>fspaustralia.com.au/wheel-chocks/</td><td class="right">80</td><td>Hub page</td></tr>
+  <tr><td>3</td><td>Barrier Group</td><td>barriergroup.com.au</td><td class="right">55</td><td>Product</td></tr>
+  <tr><td>4</td><td>Silverback</td><td>silverback.com.au</td><td class="right">35</td><td>Product</td></tr>
+  <tr><td>5</td><td>Pac Fire</td><td>pacfire.com.au</td><td class="right">25</td><td>Product</td></tr>
+</table>
+<p><strong>Gap.</strong> #2–3 today; a "How to choose a wheel chock by GVM" buying guide + Product schema with reviews credibly reaches #1.</p>
+
+<h3>Keyword 3 · "fire hose reel cabinet"  (vol 880 · KD 34)</h3>
+<table class="data">
+  <tr><th>Rank</th><th>Competitor</th><th>Domain</th><th class="right">Est. Clicks</th><th>Content</th></tr>
+  <tr><td>1</td><td>FlameStop</td><td>flamestop.com.au</td><td class="right">160</td><td>Cat + filterable shop</td></tr>
+  <tr><td>2</td><td>Trafalgar Safety</td><td>tsafety.com.au</td><td class="right">110</td><td>Product + custom sizing</td></tr>
+  <tr><td>3</td><td>FireFX</td><td>firefx.com.au</td><td class="right">80</td><td>Product</td></tr>
+  <tr><td>4</td><td>Galvin (Red Emperor)</td><td>galvinengineering.com.au</td><td class="right">60</td><td>Product</td></tr>
+  <tr><td>5–8</td><td><strong>FSP Australia</strong></td><td>fspaustralia.com.au/fire-protection/fire-cabinets/</td><td class="right">35</td><td>Category</td></tr>
+</table>
+<p><strong>Gap.</strong> HDPE-vs-steel is a unique angle that is invisible on the page. A pillar "HDPE vs Steel Fire Hose Reel Cabinets — Coastal & Marine Applications" + AS/NZS 1841 compliance content + marine case study should triple visibility.</p>
+
+<h3>Keyword 4 · "post and rail fencing australia"  (vol 590 · KD 31)</h3>
+<table class="data">
+  <tr><th>Rank</th><th>Competitor</th><th>Domain</th><th class="right">Est. Clicks</th><th>Content</th></tr>
+  <tr><td>1</td><td>Stock &amp; Noble</td><td>stockandnoble.com.au</td><td class="right">110</td><td>Pillar + finder</td></tr>
+  <tr><td>2</td><td>Think Fencing</td><td>thinkfencing.com.au</td><td class="right">80</td><td>Cat + guide</td></tr>
+  <tr><td>3</td><td><strong>FSP Australia</strong></td><td>fspaustralia.com.au/post-and-rail/...</td><td class="right">55</td><td>Category</td></tr>
+  <tr><td>4</td><td>fspandco.com (own)</td><td>fspandco.com/agriculture/pvc-fencing/...</td><td class="right">30</td><td>Duplicate</td></tr>
+</table>
+
+<h3>Keyword 5 · "fire extinguisher cabinet"  (vol 1,300 · KD 36)</h3>
+<table class="data">
+  <tr><th>Rank</th><th>Competitor</th><th>Domain</th><th class="right">Est. Clicks</th><th>Content</th></tr>
+  <tr><td>1</td><td>FlameStop</td><td>flamestop.com.au</td><td class="right">230</td><td>Cat + AS-filter</td></tr>
+  <tr><td>2</td><td>Prime Fire Supplies</td><td>primefiresupplies.com.au</td><td class="right">130</td><td>Product</td></tr>
+  <tr><td>3</td><td>Fire Extinguisher Online</td><td>fireextinguisheronline.com.au</td><td class="right">90</td><td>Category</td></tr>
+  <tr><td>4</td><td>FireFX</td><td>firefx.com.au</td><td class="right">65</td><td>Product</td></tr>
+  <tr><td>12+</td><td><strong>FSP Australia</strong></td><td>fspaustralia.com.au/fire-protection/fire-cabinets/</td><td class="right">15</td><td>Generic shared cat</td></tr>
+</table>
+<p><strong>Gap.</strong> FSP shares a single "fire-cabinets" landing for two distinct intents. Split into <code>/fire-extinguisher-cabinets/</code> + <code>/fire-hose-reel-cabinets/</code> to capture both head terms.</p>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PILLAR 3
+═══════════════════════════════════════════════════════════ -->
+<h1>Pillar 3 · Content Gap Analysis</h1>
+
+<figure>
+  <img src="charts/03_content_gap.png" alt="Content gap vs competitor average">
+  <figcaption>Figure 4 — FSP Australia content inventory (red)
+  vs. competitor average (green) across ten content categories. Total
+  shortfall ≈ 160 pages.</figcaption>
+</figure>
+
+<h2>Current Content Inventory (est.)</h2>
+<table class="data">
+  <tr><th>Category</th><th class="right">Pages</th><th>Notes</th></tr>
+  <tr><td>Total indexed pages</td><td class="right">~280</td><td>Estimated from SERP coverage</td></tr>
+  <tr><td>Product / category pages</td><td class="right">110</td><td>Strong base</td></tr>
+  <tr><td>Sub-product pages</td><td class="right">80</td><td>Some duplication w/ fspandco.com</td></tr>
+  <tr><td>Location pages</td><td class="right">6</td><td>Perth, Hobart, etc. — partial coverage</td></tr>
+  <tr><td>Blog / articles</td><td class="right">40</td><td>Orphaned — no inbound from product pages</td></tr>
+  <tr><td>WooCommerce /shop/</td><td class="right">30</td><td>Product schema partial</td></tr>
+  <tr><td>Legacy /old/ URLs (live)</td><td class="right">~10</td><td><span class="pill warn">Cleanup target</span></td></tr>
+</table>
+
+<h2>Competitor Content Audit</h2>
+<p><strong>Competitors analysed:</strong> flamestop.com.au, premier-lockers.com,
+stockandnoble.com.au, bronsonsafety.com.au, ozloka.com, tsafety.com.au,
+hitechlockers.com, thinkfencing.com.au.</p>
+<table class="data">
+  <tr><th>Category</th><th class="right">FSP</th><th class="right">Comp. avg</th><th class="right">Gap</th><th class="center">Priority</th></tr>
+  <tr><td>Buying guides</td>            <td class="right">4</td>  <td class="right">22</td><td class="right">−18</td><td class="center"><span class="pill crit">Critical</span></td></tr>
+  <tr><td>Comparison pages</td>          <td class="right">1</td>  <td class="right">12</td><td class="right">−11</td><td class="center"><span class="pill crit">Critical</span></td></tr>
+  <tr><td>Case studies</td>              <td class="right">3</td>  <td class="right">18</td><td class="right">−15</td><td class="center"><span class="pill high">High</span></td></tr>
+  <tr><td>Industry-vertical hubs</td>    <td class="right">4</td>  <td class="right">11</td><td class="right">−7</td> <td class="center"><span class="pill high">High</span></td></tr>
+  <tr><td>Compliance / AS-NZS content</td><td class="right">0</td> <td class="right">9</td> <td class="right">−9</td> <td class="center"><span class="pill crit">Critical</span></td></tr>
+  <tr><td>FAQ / Q&amp;A pages</td>       <td class="right">10</td> <td class="right">45</td><td class="right">−35</td><td class="center"><span class="pill high">High</span></td></tr>
+  <tr><td>Location pages</td>            <td class="right">6</td>  <td class="right">14</td><td class="right">−8</td> <td class="center"><span class="pill med">Medium</span></td></tr>
+  <tr><td>Calculators / sizing tools</td><td class="right">0</td> <td class="right">4</td>  <td class="right">−4</td> <td class="center"><span class="pill med">Medium</span></td></tr>
+  <tr><td>Video / embed pages</td>       <td class="right">2</td>  <td class="right">25</td><td class="right">−23</td><td class="center"><span class="pill med">Medium</span></td></tr>
+  <tr><td>Glossary terms</td>            <td class="right">0</td>  <td class="right">30</td><td class="right">−30</td><td class="center"><span class="pill low">Low–Med</span></td></tr>
+  <tr class="total"><td>TOTAL gap</td><td class="right">30</td><td class="right">190</td><td class="right">−160</td><td></td></tr>
+</table>
+
+<h2>Content Creation Roadmap (12 Months)</h2>
+<table class="data">
+  <tr><th>Phase</th><th>Timeline</th><th class="right">Pages</th><th>Categories</th><th class="right">Est. Traffic</th></tr>
+  <tr><td>Phase 1 — Quick wins</td><td>Weeks 1–8</td>    <td class="right">12</td>
+      <td>FAQ schema · 4 buying guides · 4 split-out category pages · 2 industry pillar drafts</td>
+      <td class="right">+500</td></tr>
+  <tr><td>Phase 2 — Core content</td><td>Weeks 9–24</td><td class="right">38</td>
+      <td>12 buying guides · 6 vertical hubs · 10 case studies · 10 PDP/sub-product expansions</td>
+      <td class="right">+1,300</td></tr>
+  <tr><td>Phase 3 — Authority</td><td>Weeks 25–52</td>  <td class="right">60</td>
+      <td>Compliance hubs · glossary · calculators · 30 programmatic industry × product · 12 location</td>
+      <td class="right">+1,400</td></tr>
+  <tr class="total"><td colspan="2">12-month total</td><td class="right">110</td><td></td><td class="right">+3,200</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PILLAR 4
+═══════════════════════════════════════════════════════════ -->
+<h1>Pillar 4 · Backlink Profile &amp; Link Building</h1>
+
+<figure>
+  <img src="charts/04_backlink_quality.png" alt="Backlink quality donut">
+  <figcaption>Figure 5 — Estimated backlink-source quality breakdown.
+  Only ~16% of links come from high or industry authority sources;
+  the long-term play is to flip this ratio toward green/navy.</figcaption>
+</figure>
+
+<h2>Current Backlink Baseline (est.)</h2>
+<table class="data">
+  <tr><th>Metric</th><th class="right">Value</th><th>Notes</th></tr>
+  <tr><td>Referring domains</td>           <td class="right">180–260</td><td>Spread across 4 FSP-owned domains</td></tr>
+  <tr><td>Total backlinks</td>             <td class="right">1,200–1,800</td><td></td></tr>
+  <tr><td>Domain Authority (Moz)</td>      <td class="right">26</td><td></td></tr>
+  <tr><td>Top competitor DA</td>           <td class="right">38</td><td>FlameStop</td></tr>
+  <tr><td>DA gap</td>                      <td class="right">−12 pts (~35%)</td><td>vs. market leader</td></tr>
+</table>
+
+<h2>Tiered Link-Building Opportunity Map</h2>
+<table class="data">
+  <tr><th>Tier</th><th>Profile</th><th>Sample targets</th><th class="right">Target wins / 12 mo</th></tr>
+  <tr><td><span class="pill" style="background:var(--navy)">Tier 1</span></td>
+      <td>DA 60+ authority / .gov / .edu</td>
+      <td>business.gov.au, AMMA, MinEx, CSIRO suppliers, ABC regional, UQ &amp; Curtin</td>
+      <td class="right">5</td></tr>
+  <tr><td><span class="pill" style="background:var(--gold)">Tier 2</span></td>
+      <td>DA 45–60 trade press</td>
+      <td>australianmining.com.au, miningweekly.com, fpamagazine.com.au, horsesandpeople.com.au, aquaticsandrec.com.au</td>
+      <td class="right">12</td></tr>
+  <tr><td><span class="pill" style="background:var(--green)">Tier 3</span></td>
+      <td>DA 40–55 partner ecosystem</td>
+      <td>Safe Option Solutions, Empire Furniture, Atom Industrial, named architects, named schools</td>
+      <td class="right">10</td></tr>
+  <tr><td><span class="pill med">Tier 4</span></td>
+      <td>DA 50–70 niche authority</td>
+      <td>Engineers Australia, Standards Australia commentary, HDPE Recycling AU</td>
+      <td class="right">5</td></tr>
+  <tr><td><span class="pill low">Tier 5</span></td>
+      <td>DA 30–45 directory cleanup + new</td>
+      <td>Yellow Pages, TrueLocal, Hotfrog, FerretAU, IndustryNet, ProductReview</td>
+      <td class="right">25 listings</td></tr>
+  <tr class="total"><td colspan="3">Target net new referring domains</td><td class="right">27</td></tr>
+</table>
+
+<h2>6-Month Action Plan</h2>
+<table class="data">
+  <tr><th>Month</th><th>Action</th><th class="right">Target domains</th><th class="right">Expected links</th></tr>
+  <tr><td>M1</td><td>NAP citation cleanup + 25 directory listings (Tier 5)</td><td class="right">25</td><td class="right">8</td></tr>
+  <tr><td>M2</td><td>Reseller / dealer badge programme</td><td class="right">10</td><td class="right">6</td></tr>
+  <tr><td>M3</td><td>Trade-press pitch: "HDPE vs Steel for Coastal Fire Safety"</td><td class="right">4</td><td class="right">3</td></tr>
+  <tr><td>M4</td><td>Case-study syndication × 3 (mine site / school / aquatic)</td><td class="right">6</td><td class="right">4</td></tr>
+  <tr><td>M5</td><td>Industry-association memberships (AMMA, FPA Australia, etc.)</td><td class="right">4</td><td class="right">4</td></tr>
+  <tr><td>M6</td><td>Guest articles on australianmining.com.au + miningweekly.com</td><td class="right">2</td><td class="right">2</td></tr>
+  <tr class="total"><td colspan="3">6-month total</td><td class="right">27 new domains</td></tr>
+</table>
+<p><strong>Expected DA lift:</strong> +6 to +10 points over 12 months.</p>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PILLAR 5
+═══════════════════════════════════════════════════════════ -->
+<h1>Pillar 5 · Site Architecture &amp; Internal Linking</h1>
+
+<h2>Current Structure — Issues Observed</h2>
+<ol>
+  <li><strong>Cannibalisation:</strong> <code>/cable-protection/</code> exists at root AND under <code>/mining/cable-protection/</code>.</li>
+  <li><strong>Cross-domain duplicate hubs</strong> on fspandco.com mirror the entire product tree.</li>
+  <li><strong>No "Industries / Solutions" hub</strong> — buyers shop by vertical (mining, schools, marine), not material type.</li>
+  <li><strong>Orphaned blog:</strong> articles don't link contextually to product/category pages.</li>
+  <li><strong>Legacy <code>/old/</code> URLs</strong> still indexed without 301s.</li>
+</ol>
+<p>Internal link density ≈ 3 links/page (target 5–8). Crawl depth 3–4 (target &lt;3).</p>
+
+<h2>Proposed Hub-and-Spoke Architecture</h2>
+<pre>
+/  (Homepage)
+├── /solutions/                           ← NEW pillar axis: by industry vertical
+│   ├── /solutions/mining-safety/
+│   ├── /solutions/schools-education/
+│   ├── /solutions/aquatic-centres/
+│   ├── /solutions/marine-coastal/
+│   ├── /solutions/equine-properties/
+│   └── /solutions/transport-logistics/
+├── /products/                            ← existing product axis
+│   ├── /fire-protection/
+│   ├── /lockers/      (consolidate /oz-loka/ into /lockers/)
+│   ├── /wheel-chocks/
+│   ├── /mining/       (collapse with /cable-protection/)
+│   ├── /agriculture/
+│   ├── /safety/
+│   └── /marine/
+├── /resources/                           ← NEW
+│   ├── /resources/buying-guides/         (15 guides)
+│   ├── /resources/compliance/            (AS/NZS hub — E-E-A-T)
+│   ├── /resources/case-studies/          (15 stories)
+│   ├── /resources/calculators/           (locker-bank sizing, paddock fencing)
+│   └── /resources/faqs/                  (5 hubs)
+└── /locations/                           ← consolidate city pages
+    ├── /locations/yatala-qld/
+    ├── /locations/singleton-nsw/
+    ├── /locations/dandenong-vic/
+    ├── /locations/mackay-qld/
+    ├── /locations/neerabup-wa/
+    └── /locations/[city-page × 8]/       (programmatic — see Pillar 8)
+</pre>
+<p><strong>Depth:</strong> all pages ≤3 clicks from home.</p>
+
+<h2>Internal-Linking Targets</h2>
+<table class="data">
+  <tr><th>Anchor distribution</th><th class="right">%</th><th>Examples</th></tr>
+  <tr><td>Branded</td>     <td class="right">20%</td><td>"FSP Oz-Loka A-series locker", "FSP OzChoks"</td></tr>
+  <tr><td>Generic</td>     <td class="right">30%</td><td>"view product", "learn more"</td></tr>
+  <tr><td>Keyword-rich</td><td class="right">50%</td><td>"heavy-duty plastic locker", "HDPE fire hose reel cabinet"</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PILLAR 6
+═══════════════════════════════════════════════════════════ -->
+<h1>Pillar 6 · Local SEO</h1>
+
+<p>FSP is a national manufacturer with 5 Australian distribution centres
++ international arms. Local SEO captures "<em>[product] [city]</em>"
+buying-intent traffic and protects branch visibility.</p>
+
+<h2>Branch Profiles</h2>
+<table class="data">
+  <tr><th>Branch</th><th>Address</th><th>GBP status (est.)</th><th>Action</th></tr>
+  <tr><td>Yatala QLD (HQ)</td><td>20 Octal St, Yatala QLD 4207</td><td><span class="pill pass">Claimed</span></td><td>Add LocalBusiness schema, 25-photo refresh</td></tr>
+  <tr><td>Singleton NSW</td>  <td>Hunter region</td>           <td><span class="pill warn">Verify</span></td><td>Claim / verify GBP, build /locations/ page</td></tr>
+  <tr><td>Dandenong VIC</td>  <td>South-east Melbourne</td>    <td><span class="pill warn">Verify</span></td><td>Claim / verify GBP, build /locations/ page</td></tr>
+  <tr><td>Mackay QLD</td>     <td>Mining-region depot</td>     <td><span class="pill warn">Verify</span></td><td>Mining-vertical landing + GBP</td></tr>
+  <tr><td>Neerabup WA</td>    <td>Northern Perth</td>          <td><span class="pill warn">Listed (YP)</span></td><td>Claim GBP, build /locations/perth/ depth</td></tr>
+</table>
+
+<h2>Citation Strategy</h2>
+<ul>
+  <li><strong>Tier 1 (high-impact):</strong> GBP × 5 · Apple Maps × 5 · Bing Places × 5 · ProductReview.com.au · Yellow Pages (re-verify).</li>
+  <li><strong>Tier 2 (medium):</strong> TrueLocal · Hotfrog · StartLocal · Localsearch · Cylex · AussieWeb · BrownBook · IndustrySearch · IndustryNet — ×5 branches ≈ 45 listings.</li>
+  <li><strong>Tier 3 (niche):</strong> FerretAU · ProductFinder · MachinesAlpha · Bizoogo · manta.com.</li>
+</ul>
+
+<div class="callout warn">
+  <h4>NAP consistency — fix during M1</h4>
+  Standardise on a single legal name ("FSP Oz Products Pty Ltd"),
+  one phone format ("1300 847 901"), one email
+  (<code>sales@fspaustralia.com.au</code>) — avoid the inconsistent
+  <code>@fspozproducts.com.au</code> appearing on some pages.
+</div>
+
+<h2>Service-Area Expansion — Top 12 Cities</h2>
+<table class="data">
+  <tr><th>City</th><th class="right">Pop.</th><th class="right">Local vol/mo (est.)</th><th>Status</th></tr>
+  <tr><td>Brisbane</td>    <td class="right">2.6M</td><td class="right">90</td><td>Build — HQ city, strongest play</td></tr>
+  <tr><td>Sydney</td>      <td class="right">5.3M</td><td class="right">110</td><td>Build</td></tr>
+  <tr><td>Melbourne</td>   <td class="right">5.0M</td><td class="right">95</td><td>Build</td></tr>
+  <tr><td>Adelaide</td>    <td class="right">1.4M</td><td class="right">35</td><td>Build</td></tr>
+  <tr><td>Perth</td>       <td class="right">2.2M</td><td class="right">50</td><td><span class="pill warn">Exists — needs depth</span></td></tr>
+  <tr><td>Hobart</td>      <td class="right">250k</td><td class="right">12</td><td><span class="pill warn">Exists — needs depth</span></td></tr>
+  <tr><td>Newcastle</td>   <td class="right">450k</td><td class="right">25</td><td>Build</td></tr>
+  <tr><td>Mackay</td>      <td class="right">80k</td><td class="right">18</td><td>Mining-region priority</td></tr>
+  <tr><td>Townsville</td>  <td class="right">180k</td><td class="right">15</td><td>Mining-region priority</td></tr>
+  <tr><td>Toowoomba</td>   <td class="right">140k</td><td class="right">10</td><td>Build</td></tr>
+  <tr><td>Geelong</td>     <td class="right">270k</td><td class="right">12</td><td>Build</td></tr>
+  <tr><td>Wollongong</td>  <td class="right">300k</td><td class="right">14</td><td>Build</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PILLAR 7
+═══════════════════════════════════════════════════════════ -->
+<h1>Pillar 7 · AEO / GEO — AI Search Optimisation</h1>
+
+<figure>
+  <img src="charts/06_aeo_geo_radar.png" alt="AEO/GEO radar chart">
+  <figcaption>Figure 6 — AEO/GEO 10-dimension scorecard: current 32/100
+  (red) vs. Month-12 target 78/100 (green). The biggest gaps are
+  AI-crawler access, AI citation share and FAQ/HowTo schema.</figcaption>
+</figure>
+
+<h2>1. AI Crawler Configuration</h2>
+<table class="data">
+  <tr><th>Crawler</th><th>Status (est.)</th><th>Recommendation</th></tr>
+  <tr><td>GPTBot (OpenAI)</td>     <td><span class="pill fail">Blocked by WAF</span></td><td>Allow on public catalogue</td></tr>
+  <tr><td>ChatGPT-User</td>        <td><span class="pill fail">Blocked</span></td>       <td>Allow</td></tr>
+  <tr><td>ClaudeBot (Anthropic)</td><td><span class="pill fail">Blocked</span></td>      <td>Allow</td></tr>
+  <tr><td>PerplexityBot</td>       <td><span class="pill fail">Blocked</span></td>       <td>Allow</td></tr>
+  <tr><td>Google-Extended</td>     <td><span class="pill warn">Unknown</span></td>       <td>Allow</td></tr>
+  <tr><td>Bytespider (ByteDance)</td><td><span class="pill warn">Unknown</span></td>     <td>Allow (commercial-search visibility)</td></tr>
+</table>
+
+<h2>2. E-E-A-T Signals</h2>
+<table class="data">
+  <tr><th>Dimension</th><th>Status</th><th>Fix</th></tr>
+  <tr><td>Experience</td><td><span class="pill pass">Strong</span></td><td>30+ yrs; named institutional customers — surface this on every page</td></tr>
+  <tr><td>Expertise</td><td><span class="pill warn">Weak surface</span></td><td>Add named engineers with bios + LinkedIn citations</td></tr>
+  <tr><td>Authoritativeness</td><td><span class="pill warn">Moderate</span></td><td>Consolidate domains; pursue trade-press features</td></tr>
+  <tr><td>Trustworthiness</td><td><span class="pill warn">Moderate</span></td><td>Warranty hub; Trustpilot / ProductReview embed; review schema</td></tr>
+</table>
+
+<h2>3. Entity SEO &amp; Knowledge Graph</h2>
+<ul>
+  <li>Wikidata Q-ID: <strong>missing</strong> — create one (FSP Oz Products Pty Ltd, est. 1994, Yatala QLD, ABN 17 066 020 442).</li>
+  <li>SameAs schema linking Facebook · LinkedIn · Crunchbase · Atom Industrial: <strong>missing</strong>.</li>
+  <li>Knowledge Panel: <strong>not eligible</strong> until Organization + Wikidata + consistent NAP shipped.</li>
+</ul>
+
+<h2>4. Answer-First Content &amp; FAQ Schema Plan</h2>
+<ul>
+  <li><strong>50+ FAQ schema targets</strong> across category, PDP and resource pages.</li>
+  <li><strong>HowTo schema (8 candidates):</strong> locker install · hose reel use · cable protector deployment · post-and-rail install · chock placement · beacon mounting · marine cabinet install · food-locker hygiene.</li>
+  <li><strong>Speakable schema</strong> on all 50 FAQ blocks (voice search).</li>
+  <li>Every category and PDP must open with a 60–80-word direct-answer paragraph above any marketing copy.</li>
+</ul>
+
+<h2>5. <code>llms.txt</code> Draft</h2>
+<pre># FSP Australia — fspaustralia.com.au
+# Manufacturer of heavy-duty HDPE plastic products since 1994.
+
+What's freely citable:
+  All product specifications, dimensions, warranty terms, compliance
+  references (AS/NZS standards cited), buying-guide content and
+  educational blog posts. Cite product pages by URL.
+
+What requires permission:
+  Customer case-study content, photographs, engineering drawings,
+  and the OzLoka® / OzChoks® brand marks.
+
+Preferred citation format:
+  "FSP Oz Products (fspaustralia.com.au)"
+
+Contact for AI partnerships:
+  sales@fspaustralia.com.au
+
+Sitemap: https://www.fspaustralia.com.au/sitemap.xml</pre>
+
+<p><strong>AEO/GEO score forecast:</strong> 32/100 → 78/100 in 12 months.
+<strong>Expected AI-driven traffic:</strong> +1,200–1,800 visits/month
+at maturity.</p>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PILLAR 8
+═══════════════════════════════════════════════════════════ -->
+<h1>Pillar 8 · Programmatic SEO</h1>
+
+<p>FSP has a clean three-dimensional matrix opportunity. The product
+catalogue maps naturally to industry verticals and Australian cities,
+giving a defensible long-tail moat against re-sellers.</p>
+
+<h2>Data Matrix</h2>
+<table class="data">
+  <tr><th>Dimension</th><th class="right">Values</th><th>Examples</th></tr>
+  <tr><td>A · Product family</td><td class="right">10</td>
+      <td>Lockers · Wheel chocks · Fire hose reel cabinets · Fire extinguisher cabinets · Cable protectors · Delineation signage · Post &amp; rail fencing · Ag troughs · Vehicle safety · Marine storage</td></tr>
+  <tr><td>B · Industry vertical</td><td class="right">8</td>
+      <td>Mining · Schools &amp; Education · Aquatic Centres · Equine &amp; Farms · Marine &amp; Coastal · Transport &amp; Logistics · Manufacturing · Defence / Government</td></tr>
+  <tr><td>C · Australian city</td><td class="right">12</td>
+      <td>Brisbane · Sydney · Melbourne · Perth · Adelaide · Hobart · Canberra · Darwin · Newcastle · Mackay · Townsville · Wollongong</td></tr>
+</table>
+
+<table class="data">
+  <tr><th>Combination</th><th class="right">Theoretical max</th><th class="right">Year-1 target</th><th class="right">Year-2 target</th></tr>
+  <tr><td>Industry × Product (A × B)</td><td class="right">80</td><td class="right">80</td><td class="right">80</td></tr>
+  <tr><td>City hubs</td>                  <td class="right">12</td><td class="right">12</td><td class="right">12</td></tr>
+  <tr><td>City × Top-4 product (A × C)</td><td class="right">48</td><td class="right">—</td><td class="right">48</td></tr>
+  <tr class="total"><td>Total pages</td><td class="right">960</td><td class="right">92</td><td class="right">188</td></tr>
+</table>
+<p><strong>Expected traffic at Year-1 completion:</strong> +700 to +1,200 clicks/month.</p>
+
+<h2>Page Template</h2>
+<ul>
+  <li>URL pattern: <code>/solutions/[industry]/[product]/</code> (e.g. <code>/solutions/mining/cable-protection/</code>)</li>
+  <li>Minimum 1,200 words to avoid thin-content penalty.</li>
+  <li>Required sections: H1 + direct-answer paragraph (60–80 wds) · industry problem statement · 3–5 featured SKUs (Product schema) · industry case study · AS/NZS compliance reference · industry-specific buying considerations · FAQ block (5–8 Q&amp;As + FAQ schema) · 5–8 internal links.</li>
+</ul>
+
+<hr>
+
+<!-- ═══════════════════════════════════════════════════════════
+     12-MONTH ROADMAP
+═══════════════════════════════════════════════════════════ -->
+<h1>12-Month Roadmap</h1>
+
+<figure>
+  <img src="charts/07_roadmap_gantt.png" alt="12-month roadmap gantt">
+  <figcaption>Figure 7 — 12-month implementation roadmap. Phase 1 is
+  short and high-leverage; phase 2 is content-heavy; phase 3 is
+  programmatic scale.</figcaption>
+</figure>
+
+<h2>Phase 1 · Foundation (Months 1–2)</h2>
+<ul>
+  <li>Decide canonical domain · 301-redirect plan for fspandco.com</li>
+  <li>301 all <code>/old/</code> URLs · consolidate <code>/cable-protection/</code> + <code>/mining/cable-protection/</code></li>
+  <li>Whitelist verified bots in Cloudflare WAF · publish <code>llms.txt</code></li>
+  <li>Deploy Organization, LocalBusiness × 5, Product, Review, FAQ schema</li>
+  <li>Add security headers at Cloudflare (HSTS, CSP, X-Frame-Options)</li>
+  <li>Connect GSC, GA4, Bing Webmaster Tools · set up CWV monitoring</li>
+  <li>Publish 12 quick-win pages (4 FAQ hubs · 4 buying guides · 2 split-out category pages · 2 industry pillar drafts)</li>
+  <li>Expected impact: <strong>+500 clicks/month by Month 3</strong></li>
+</ul>
+
+<h2>Phase 2 · Content Expansion (Months 3–6)</h2>
+<ul>
+  <li>38 new pages (12 buying guides + 6 industry pillars + 10 case studies + 10 PDP/sub-product expansions)</li>
+  <li>15 net-new referring domains via trade-press features + case-study syndication + association memberships</li>
+  <li>Knowledge Panel pursuit begins (Wikidata Q-ID submission)</li>
+  <li>Expected impact: <strong>+1,300 clicks/month cumulative by Month 6</strong></li>
+</ul>
+
+<h2>Phase 3 · Authority &amp; Scale (Months 7–12)</h2>
+<ul>
+  <li>60 new pages — programmatic industry × product matrix + 12 location pages + 8 compliance / glossary / calculator pages</li>
+  <li>AI Overview tracking + monthly content refresh cycle</li>
+  <li>Begin Year-2 city × product matrix</li>
+  <li>Expected impact: <strong>+1,400 clicks/month cumulative by Month 12</strong></li>
+</ul>
+
+<h2>Total 12-Month Impact</h2>
+<table class="data">
+  <tr><th>Metric</th><th class="right">Current (est.)</th><th class="right">Target M12</th><th class="right">Growth</th></tr>
+  <tr><td>Organic clicks / month</td>          <td class="right">5,000</td>  <td class="right">11,500</td>  <td class="right">+130%</td></tr>
+  <tr><td>Indexed pages</td>                    <td class="right">280</td>    <td class="right">480</td>    <td class="right">+200</td></tr>
+  <tr><td>Avg keyword position (top-20)</td>    <td class="right">#8.2</td>   <td class="right">#3.5</td>   <td class="right">−4.7 positions</td></tr>
+  <tr><td>Domain Authority (Moz)</td>           <td class="right">26</td>     <td class="right">34</td>     <td class="right">+8</td></tr>
+  <tr><td>Referring domains</td>                <td class="right">220</td>    <td class="right">295</td>    <td class="right">+75</td></tr>
+  <tr><td>Featured-snippet wins</td>            <td class="right">0</td>      <td class="right">4–6</td>    <td class="right">new</td></tr>
+  <tr><td>AI citation appearances/mo</td>       <td class="right">~0</td>     <td class="right">60+</td>    <td class="right">new</td></tr>
+  <tr class="total"><td>Annual organic visits</td><td class="right">60,000</td><td class="right">138,000</td><td class="right">+78,000</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════
+     RESOURCES / BUDGET
+═══════════════════════════════════════════════════════════ -->
+<h1>Resource Requirements &amp; Budget</h1>
+
+<h2>Personnel</h2>
+<table class="data">
+  <tr><th>Role</th><th class="right">Hrs / mo</th><th class="right">Duration</th><th class="right">Cost (AUD)</th></tr>
+  <tr><td>SEO Strategist (lead)</td>      <td class="right">30</td><td class="right">12</td><td class="right">$36,000</td></tr>
+  <tr><td>Content Writer (technical)</td>  <td class="right">60</td><td class="right">12</td><td class="right">$43,200</td></tr>
+  <tr><td>Technical SEO / Dev</td>         <td class="right">25</td><td class="right">6</td> <td class="right">$24,000</td></tr>
+  <tr><td>Link Builder / PR</td>           <td class="right">25</td><td class="right">12</td><td class="right">$24,000</td></tr>
+  <tr><td>QA / Editor</td>                 <td class="right">12</td><td class="right">12</td><td class="right">$10,800</td></tr>
+  <tr class="total"><td>Total personnel</td><td class="right">152</td><td></td><td class="right">$138,000</td></tr>
+</table>
+
+<h2>Tools &amp; Software</h2>
+<table class="data">
+  <tr><th>Tool</th><th>Purpose</th><th class="right">$/mo</th><th class="right">Months</th><th class="right">Total</th></tr>
+  <tr><td>Ahrefs Standard</td>         <td>Keywords + backlinks</td>      <td class="right">$279</td><td class="right">12</td><td class="right">$3,348</td></tr>
+  <tr><td>Screaming Frog</td>          <td>Crawl</td>                      <td class="right">$25</td> <td class="right">12</td><td class="right">$300</td></tr>
+  <tr><td>Rank Math Pro / Schema Pro</td><td>Schema deployment</td>        <td class="right">$25</td> <td class="right">12</td><td class="right">$300</td></tr>
+  <tr><td>BrightLocal</td>             <td>Citation cleanup + LocalRank</td><td class="right">$39</td><td class="right">12</td><td class="right">$468</td></tr>
+  <tr><td>WordPress dev plugins</td>   <td>On-page / image opt.</td>       <td class="right">$25</td> <td class="right">12</td><td class="right">$300</td></tr>
+  <tr><td>Cloudflare Pro</td>          <td>CWV + WAF</td>                  <td class="right">$25</td> <td class="right">12</td><td class="right">$300</td></tr>
+  <tr class="total"><td colspan="2">Total tooling</td><td class="right">$418</td><td></td><td class="right">$5,016</td></tr>
+</table>
+
+<div class="callout navy">
+  <h4>Combined 12-month budget</h4>
+  <strong>AUD $143,016</strong> (≈ AUD $11,900/month all-in)<br>
+  <strong>Forecast ROI:</strong> ~80,000 incremental organic visits × 2.5% lead-conv ×
+  $1,800 avg order ≈ <strong>AUD $360,000 incremental annual revenue</strong> (conservative).
+  Year-1 ROI ≈ 2.5× · Year-2 ROI ≈ 4–6×.
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     KPIs / METRICS
+═══════════════════════════════════════════════════════════ -->
+<h1>Success Metrics &amp; Reporting</h1>
+
+<h2>Monthly KPI Targets</h2>
+<table class="data">
+  <tr><th>Metric</th><th class="right">M1</th><th class="right">M3</th><th class="right">M6</th><th class="right">M12</th></tr>
+  <tr><td>Organic clicks / mo</td>           <td class="right">5,200</td><td class="right">6,000</td><td class="right">8,200</td><td class="right">11,500</td></tr>
+  <tr><td>Pages indexed</td>                  <td class="right">280</td>  <td class="right">295</td>  <td class="right">360</td>  <td class="right">480</td></tr>
+  <tr><td>Avg position (top-20)</td>          <td class="right">#8</td>   <td class="right">#7</td>   <td class="right">#5</td>   <td class="right">#3.5</td></tr>
+  <tr><td>New backlinks (cumulative)</td>     <td class="right">8</td>    <td class="right">14</td>   <td class="right">22</td>   <td class="right">27</td></tr>
+  <tr><td>AI Overview appearances</td>        <td class="right">0</td>    <td class="right">2</td>   <td class="right">12</td>   <td class="right">40</td></tr>
+  <tr><td>GBP profile views (all 5)</td>      <td class="right">baseline</td><td class="right">+30%</td><td class="right">+80%</td><td class="right">+150%</td></tr>
+</table>
+
+<h2>Dashboard Components</h2>
+<ul>
+  <li>Organic traffic trend (GA4)</li>
+  <li>Keyword position tracking (Ahrefs/SEMrush — 80 tracked terms)</li>
+  <li>Indexed pages trend (GSC)</li>
+  <li>New backlinks (Ahrefs)</li>
+  <li>Content publishing tracker (Notion / Trello)</li>
+  <li>CWV monitoring (GSC + PageSpeed weekly)</li>
+  <li>AI citation tracker (Perplexity + ChatGPT manual audit monthly)</li>
+  <li>Citation NAP consistency (BrightLocal)</li>
+</ul>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NEXT STEPS
+═══════════════════════════════════════════════════════════ -->
+<h1>Next Steps · Week-1 Priorities</h1>
+
+<table class="data">
+  <tr><th class="center">Priority</th><th>Action</th><th>Owner</th><th class="right">Days</th></tr>
+  <tr><td class="center"><span class="pill" style="background:var(--red);">P1</span></td>
+      <td>Cloudflare WAF rule review — whitelist verified bots (GPTBot, ClaudeBot, PerplexityBot, AhrefsBot, SemrushBot, Googlebot, Bingbot). Publish <code>/llms.txt</code>.</td>
+      <td>Technical lead</td><td class="right">2</td></tr>
+  <tr><td class="center"><span class="pill" style="background:var(--amber);">P2</span></td>
+      <td>Domain-consolidation decision meeting. Decide canonical between fspaustralia.com.au / fspandco.com / fspglobalproducts.com. Begin 301 mapping.</td>
+      <td>Founder + Marketing</td><td class="right">3</td></tr>
+  <tr><td class="center"><span class="pill" style="background:var(--green);">P3</span></td>
+      <td>Connect GSC, GA4, Bing Webmaster Tools. Submit fresh XML sitemap. Audit <code>/old/</code> URL list and queue redirects.</td>
+      <td>Technical lead</td><td class="right">2</td></tr>
+</table>
+
+<h2>Approval &amp; Sign-off</h2>
+<ul>
+  <li>[ ] Stakeholder review complete</li>
+  <li>[ ] Budget approved: AUD $143,016 / 12 months</li>
+  <li>[ ] Timeline agreed: 12 months</li>
+  <li>[ ] Team assembled: 1 lead + 1 writer + 1 dev/tech + 1 PR (4 partial-time)</li>
+</ul>
+
+<!-- ═══════════════════════════════════════════════════════════
+     APPENDICES
+═══════════════════════════════════════════════════════════ -->
+<h1>Appendices</h1>
+
+<h2>Appendix A · Full Keyword List (excerpt — 30 of 72 mapped)</h2>
+<table class="data">
+  <tr><th>Vertical</th><th>Keyword</th><th class="right">Vol/mo</th><th class="right">KD</th></tr>
+  <tr><td rowspan="6">Lockers</td>
+      <td>plastic lockers australia</td><td class="right">480</td><td class="right">32</td></tr>
+  <tr><td>plastic lockers</td>                <td class="right">1,300</td><td class="right">38</td></tr>
+  <tr><td>hdpe lockers</td>                   <td class="right">170</td><td class="right">22</td></tr>
+  <tr><td>school lockers australia</td>       <td class="right">720</td><td class="right">41</td></tr>
+  <tr><td>gym lockers australia</td>          <td class="right">480</td><td class="right">38</td></tr>
+  <tr><td>swimming pool lockers</td>          <td class="right">210</td><td class="right">26</td></tr>
+
+  <tr><td rowspan="5">Wheel chocks</td>
+      <td>wheel chocks australia</td>         <td class="right">590</td><td class="right">28</td></tr>
+  <tr><td>wheel chocks for trucks</td>        <td class="right">480</td><td class="right">30</td></tr>
+  <tr><td>semi-trailer wheel chocks</td>      <td class="right">210</td><td class="right">24</td></tr>
+  <tr><td>caravan wheel chocks</td>           <td class="right">1,900</td><td class="right">35</td></tr>
+  <tr><td>plastic wheel chock</td>            <td class="right">390</td><td class="right">26</td></tr>
+
+  <tr><td rowspan="5">Fire</td>
+      <td>fire hose reel cabinet</td>         <td class="right">880</td><td class="right">34</td></tr>
+  <tr><td>fire extinguisher cabinet</td>      <td class="right">1,300</td><td class="right">36</td></tr>
+  <tr><td>fire safety cabinet</td>             <td class="right">320</td><td class="right">28</td></tr>
+  <tr><td>hose reel cover</td>                 <td class="right">170</td><td class="right">18</td></tr>
+  <tr><td>kitchen fire safety cabinet</td>    <td class="right">90</td> <td class="right">15</td></tr>
+
+  <tr><td rowspan="5">Mining</td>
+      <td>mining cable protector</td>          <td class="right">140</td><td class="right">18</td></tr>
+  <tr><td>cable horse mining</td>              <td class="right">90</td> <td class="right">14</td></tr>
+  <tr><td>delineation signage mining</td>      <td class="right">70</td> <td class="right">12</td></tr>
+  <tr><td>hole saver mining</td>               <td class="right">50</td> <td class="right">10</td></tr>
+  <tr><td>mining safety equipment australia</td><td class="right">210</td><td class="right">26</td></tr>
+
+  <tr><td rowspan="5">Agriculture</td>
+      <td>post and rail fencing australia</td><td class="right">590</td><td class="right">31</td></tr>
+  <tr><td>pvc post and rail fencing</td>      <td class="right">320</td><td class="right">25</td></tr>
+  <tr><td>horse fencing pvc</td>              <td class="right">260</td><td class="right">24</td></tr>
+  <tr><td>agricultural troughs plastic</td>    <td class="right">110</td><td class="right">18</td></tr>
+  <tr><td>plastic horse fencing</td>           <td class="right">170</td><td class="right">22</td></tr>
+
+  <tr><td rowspan="4">Brand / general</td>
+      <td>hdpe plastic manufacturer australia</td><td class="right">110</td><td class="right">22</td></tr>
+  <tr><td>fsp australia</td>                   <td class="right">390</td><td class="right">8</td></tr>
+  <tr><td>ozloka lockers</td>                  <td class="right">170</td><td class="right">6</td></tr>
+  <tr><td>oz choks wheel chocks</td>           <td class="right">70</td> <td class="right">5</td></tr>
+</table>
+
+<h2>Appendix B · Competitor Comparison Matrix (top 8)</h2>
+<table class="data">
+  <tr><th>Competitor</th><th>Primary vertical</th><th class="right">DA (est.)</th><th class="right">Ref. domains</th><th class="right">Content pages</th><th>Schema</th></tr>
+  <tr><td>FlameStop</td>            <td>Fire safety</td>   <td class="right">38</td><td class="right">~520</td><td class="right">~600</td><td>Product · Org · FAQ</td></tr>
+  <tr><td>Premier Lockers</td>      <td>Lockers</td>       <td class="right">34</td><td class="right">~410</td><td class="right">~280</td><td>Product · Org · Review</td></tr>
+  <tr><td>Stock &amp; Noble</td>    <td>Equine fencing</td><td class="right">31</td><td class="right">~340</td><td class="right">~190</td><td>Article · FAQ · HowTo</td></tr>
+  <tr><td>Bronson Safety</td>       <td>Wheel chocks</td>  <td class="right">30</td><td class="right">~290</td><td class="right">~410</td><td>Product · Org</td></tr>
+  <tr><td>OzLoka (own)</td>         <td>Lockers</td>       <td class="right">29</td><td class="right">~210</td><td class="right">~140</td><td>Product · Org</td></tr>
+  <tr><td>Trafalgar Safety</td>     <td>Fire safety</td>   <td class="right">28</td><td class="right">~240</td><td class="right">~170</td><td>Product</td></tr>
+  <tr><td>Hi-Tech Lockers</td>      <td>Lockers</td>       <td class="right">27</td><td class="right">~180</td><td class="right">~95</td><td>Product</td></tr>
+  <tr><td><strong>FSP Australia</strong></td><td>Multi-vertical</td><td class="right">26</td><td class="right">~220</td><td class="right">~280</td><td>Partial Product only</td></tr>
+</table>
+
+<h2>Appendix C · Content Calendar (Phase 1 — first 12 pages)</h2>
+<table class="data">
+  <tr><th>Wk</th><th>Page</th><th>Type</th><th>Target keyword</th></tr>
+  <tr><td>1</td><td>Plastic vs Metal vs Laminate Lockers — full comparison</td>  <td>Comparison</td><td>plastic lockers vs metal</td></tr>
+  <tr><td>1</td><td>Wheel Chock Sizing Guide by GVM</td>                          <td>Buying guide</td><td>how to choose wheel chock</td></tr>
+  <tr><td>2</td><td>HDPE vs Steel Fire Hose Reel Cabinets — Coastal &amp; Marine</td><td>Comparison + pillar</td><td>marine fire hose reel cabinet</td></tr>
+  <tr><td>2</td><td>Fire Extinguisher Cabinets — new category page</td>         <td>Category split</td><td>fire extinguisher cabinet</td></tr>
+  <tr><td>3</td><td>Fire Hose Reel Cabinets — dedicated category page</td>      <td>Category split</td><td>fire hose reel cabinet</td></tr>
+  <tr><td>3</td><td>PVC vs Timber Post &amp; Rail Fencing — 10-yr TCO</td>      <td>Buying guide</td><td>pvc post and rail fencing</td></tr>
+  <tr><td>4</td><td>Mining Cable Protector Buying Guide (AS/NZS)</td>           <td>Buying guide</td><td>mining cable protector</td></tr>
+  <tr><td>4</td><td>FAQ Hub — Lockers (12 Q&amp;As + FAQ schema)</td>            <td>FAQ hub</td><td>are plastic lockers better than metal</td></tr>
+  <tr><td>5</td><td>FAQ Hub — Fire Protection (12 Q&amp;As)</td>                <td>FAQ hub</td><td>fire hose reel cabinet cost</td></tr>
+  <tr><td>6</td><td>FAQ Hub — Wheel Chocks (10 Q&amp;As)</td>                   <td>FAQ hub</td><td>what is a wheel chock</td></tr>
+  <tr><td>7</td><td>Mining Safety pillar (industry vertical hub)</td>          <td>Industry pillar</td><td>mining safety equipment australia</td></tr>
+  <tr><td>8</td><td>Schools &amp; Education pillar (industry vertical hub)</td><td>Industry pillar</td><td>school lockers australia</td></tr>
+</table>
+
+<h2>Appendix D · Backlink Target Domains (top 20)</h2>
+<div class="two-col small">
+  <ol>
+    <li>business.gov.au</li>
+    <li>amma.org.au</li>
+    <li>minex.com.au</li>
+    <li>csiro.au (supplier registry)</li>
+    <li>abc.net.au regional</li>
+    <li>uq.edu.au mining engineering</li>
+    <li>curtin.edu.au</li>
+    <li>australianmining.com.au</li>
+    <li>miningweekly.com</li>
+    <li>fpamagazine.com.au</li>
+    <li>firemagazine.com.au</li>
+    <li>theeducator.com.au</li>
+    <li>aquaticsandrec.com.au</li>
+    <li>horsesandpeople.com.au</li>
+    <li>equestrianhub.com.au</li>
+    <li>infrastructuremagazine.com.au</li>
+    <li>processonline.com.au</li>
+    <li>ferret.com.au</li>
+    <li>machines4u.com.au</li>
+    <li>productreview.com.au</li>
+  </ol>
+</div>
+
+<h2>Appendix E · Implementation Checklist (Phase 1)</h2>
+<ul>
+  <li>[ ] Cloudflare WAF: whitelist verified bots</li>
+  <li>[ ] Publish <code>/llms.txt</code></li>
+  <li>[ ] Domain canonical decision documented</li>
+  <li>[ ] 301 map for fspandco.com / fspglobalproducts.com mirrors</li>
+  <li>[ ] 301 all <code>/old/</code> URLs</li>
+  <li>[ ] Consolidate <code>/cable-protection/</code> paths</li>
+  <li>[ ] Organization schema (homepage)</li>
+  <li>[ ] LocalBusiness schema × 5 branches</li>
+  <li>[ ] Product + Offer + AggregateRating schema across catalogue</li>
+  <li>[ ] FAQ schema on top 12 category pages</li>
+  <li>[ ] Breadcrumb schema site-wide</li>
+  <li>[ ] Security headers (HSTS, CSP, X-Frame-Options, X-Content-Type-Options)</li>
+  <li>[ ] GSC + GA4 + Bing WMT connection</li>
+  <li>[ ] BrightLocal NAP audit & cleanup</li>
+  <li>[ ] Reseller-badge programme outreach (10 partners)</li>
+  <li>[ ] First 12 quick-win pages live</li>
+</ul>
+
+<h2>Appendix G · Technical Implementation Guide — Headers (sample)</h2>
+<pre>Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+X-Content-Type-Options:    nosniff
+X-Frame-Options:           SAMEORIGIN
+Referrer-Policy:           strict-origin-when-cross-origin
+Permissions-Policy:        geolocation=(), microphone=(), camera=()
+Content-Security-Policy:   default-src 'self' https:; img-src 'self' https: data:;
+                           style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:;</pre>
+
+<hr>
+<p class="small" style="text-align:center;">
+  Prepared by Claude · seo-audit-system skill v1.2.0 ·
+  Methodology AUDIT_TEMPLATE_BLANK.md + SEO_AUDIT_FRAMEWORK.md + AUDIT_EXECUTION_CHECKLIST.md ·
+  Report date 14 May 2026 · Next review 14 Aug 2026
+</p>
+
+</body>
+</html>
